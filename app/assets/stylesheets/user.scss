@@ -1,0 +1,38 @@
+.signup-form {
+  background-color: white;
+  text-align: center;
+  width: 600px;
+  height: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  &__title {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  &__input {
+    width: 300px;
+    height: 35px;
+    background-color: #f4f8fa;
+    border-style: none;
+    font-size: 20px;
+  }
+  &__submit {
+    width: 300px;
+    padding: 5px;
+    font-size: 20px;
+    border-style: none;
+    background-color: #FFE733;
+    margin-bottom: 20px;
+    font-weight: bold;
+    border-radius: 30px;
+  }
+  &__link {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.field {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
