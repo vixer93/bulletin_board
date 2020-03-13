@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: bulletin_board_production
-  username: bulletin_board
-  password: <%= ENV['BULLETIN_BOARD_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
