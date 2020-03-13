@@ -1,0 +1,19 @@
+<div class="user-form">
+  <h2 class="user-form__title">ログイン</h2>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "user-form__input", placeholder: "メールアドレス" %>
+    </div>
+
+    <div class="field">
+      <%= f.password_field :password, autocomplete: "current-password", class: "user-form__input", placeholder: "パスワード" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "ログイン", class: "user-form__submit" %>
+    </div>
+  <% end %>
+
+  <%= link_to "登録画面へ", new_user_registration_path,class: "user-form__link" %>
+</div>
