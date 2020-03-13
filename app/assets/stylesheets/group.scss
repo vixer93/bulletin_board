@@ -1,0 +1,73 @@
+.group-create-button {
+  width: 125px;
+  height: 125px;
+  background-color: black;
+  border-radius: 30px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  &__content {
+    text-align: center;
+  }
+  &__icon {
+    color: #FFE733;
+    font-size: 70px;
+  }
+  &__description {
+    color: #FFE733;
+    font-size: 13px;
+  }
+}
+
+.group-create-form {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  &__bg {
+    height: 100%;
+    width: 100%;
+    background: rgba(45,45,45, 0.8);
+  }
+  &__input-area {
+    height: 200px;
+    width: 500px;
+    padding: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    text-align: center;
+  }
+  &__title {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+  &__input-title {
+    width: 400px;
+    height: 35px;
+    background-color: #f4f8fa;
+    border-style: none;
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+  &__submit {
+    width: 400px;
+    padding: 5px;
+    font-size: 20px;
+    border-style: none;
+    background-color: #FFE733;
+    margin-bottom: 20px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+  }
+}
