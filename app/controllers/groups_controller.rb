@@ -12,6 +12,10 @@ class GroupsController < ApplicationController
     end
   end
 
+  def show
+    @group = Group.find(params[:id])
+  end
+
   def info
     @groups = Group.all.order("id DESC")
     render json: @groups

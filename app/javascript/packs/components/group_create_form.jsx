@@ -40,7 +40,7 @@ class GroupCreateForm extends Component {
                {headers: {'content-type': 'multipart/form-data',}}
               )
     .then(res=>{
-      this.props.closeGroupCreateModal();
+      document.location.href = `/groups/${res.data.id}`
     })
   }
 
