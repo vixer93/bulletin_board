@@ -10,7 +10,6 @@ class GroupIndex extends Component {
       isLoggedIn: true,
       clickButton: false,
     }
-    this.handleClickButton = this.handleClickButton.bind(this)
   }
 
   handleClickButton(){
@@ -38,7 +37,6 @@ class GroupIndex extends Component {
       <React.Fragment>
         <div className="group-index"></div>
         <GroupCreateButton
-          closeModal={()=>{this.closeModal();}}
           handleClickButton={()=>{this.handleClickButton();}}
         />
         { groupCreateForm }
