@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_03_13_140939) do
   end
 
   create_table "responses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "responser", null: false
     t.text "content", null: false
     t.bigint "user_id"
     t.bigint "group_id"
