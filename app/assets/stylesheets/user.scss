@@ -5,6 +5,9 @@
   height: 300px;
   margin: 0 auto;
   padding: 20px;
+  &--edit {
+    height: 500px;
+  }
   &__title {
     font-size: 30px;
     margin-bottom: 20px;
