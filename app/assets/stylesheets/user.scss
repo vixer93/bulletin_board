@@ -1,4 +1,4 @@
-.signup-form {
+.user-form{
   background-color: white;
   text-align: center;
   width: 600px;
@@ -25,6 +25,7 @@
     margin-bottom: 20px;
     font-weight: bold;
     border-radius: 30px;
+    cursor: pointer;
   }
   &__link {
     text-decoration: none;
