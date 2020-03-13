@@ -21,9 +21,11 @@
 // var ReactRailsUJS = require("react_ujs");
 // ReactRailsUJS.useContext(componentRequireContext);
 
-import Header from './components/header'
+import Header         from './components/header'
+import GroupIndex     from './components/group_index'
 import WebpackerReact from 'webpacker-react'
 
 WebpackerReact.setup({
-  Header
+  Header,
+  GroupIndex,
 })
