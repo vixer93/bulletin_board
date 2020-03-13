@@ -7,13 +7,23 @@ class Header extends Component {
     this.state = {
       isLoggedIn: true,
     }
+    this.getCurrentUser  = this.getCurrentUser.bind(this)
   }
 
   componentDidMount() {
-    
+    this.getCurrentUser();
   }
 
-
+  getCurrentUser(){
+    axios.get("/users/current")
+    .then(res => {
+      if (res.data.id) {
+        this.setState({isLoggedIn: true})
+      }else{
+        this.setState({isLoggedIn: false})
+      }
+    })
+  }
 
   render() {
     let headerList;
@@ -34,7 +44,7 @@ class Header extends Component {
       <header>
         <nav>
           <div className="header">
-            <h1 className="header__title">BulletinBoard</h1>
+            <h1 className="header__title"><a href="/" className="header__link">BulletinBoard</a></h1>
             { headerList }
           </div>
         </nav>
