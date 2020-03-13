@@ -71,3 +71,30 @@
     cursor: pointer;
   }
 }
+
+.group-card {
+  width: 500px;
+  height: 200px;
+  margin: 0 auto 30px auto;
+  padding: 20px;
+  background-color: white;
+  position: relative;
+  &__title {
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 30px;
+  }
+  &__response {
+    font-size: 17px;
+  }
+  &__res-sum {
+    display: flex;
+    font-size: 17px;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+  }
+  &__res-icon {
+    color: #FFE733;
+  }
+}

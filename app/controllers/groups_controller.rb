@@ -12,6 +12,11 @@ class GroupsController < ApplicationController
     end
   end
 
+  def info
+    @groups = Group.all.order("id DESC")
+    render json: @groups
+  end
+
   private
 
   def group_params
