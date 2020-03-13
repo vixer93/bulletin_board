@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import GroupCreateButton from './group_create_button';
-import GroupCreateForm   from './group_create_form.jsx';
-import GroupCard         from './group_card.jsx'
+import GroupCreateButton from '../components/group_create_button';
+import GroupCreateForm   from '../components/group_create_form.jsx';
+import GroupCard         from '../components/group_card.jsx'
 import axios             from 'axios';
 
 class GroupIndex extends Component {

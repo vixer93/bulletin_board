@@ -1,5 +1,10 @@
+html {
+  height: 100%;
+}
+
 body {
   background-color: #f4f8fa;
+  height: 100%;
 }
 
 header {
@@ -10,7 +15,6 @@ header {
   height: 60px;
   width: 100%;
   background-color: #FFE733;
-  padding: 0 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;

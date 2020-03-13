@@ -15,17 +15,13 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-// console.log('Hello World from Webpacker')
-// // Support component names relative to this directory:
-// var componentRequireContext = require.context("components", true);
-// var ReactRailsUJS = require("react_ujs");
-// ReactRailsUJS.useContext(componentRequireContext);
-
 import Header         from './components/header'
-import GroupIndex     from './components/group_index'
+import GroupIndex     from './pages/group_index'
+import GroupShow      from './pages/group_show'
 import WebpackerReact from 'webpacker-react'
 
 WebpackerReact.setup({
   Header,
   GroupIndex,
+  GroupShow,
 })
