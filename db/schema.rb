@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_13_071055) do
+ActiveRecord::Schema.define(version: 2020_03_13_140939) do
 
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
@@ -18,6 +18,16 @@ ActiveRecord::Schema.define(version: 2020_03_13_071055) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
+  create_table "responses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "user_id"
+    t.bigint "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_responses_on_group_id"
+    t.index ["user_id"], name: "index_responses_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -34,4 +44,6 @@ ActiveRecord::Schema.define(version: 2020_03_13_071055) do
   end
 
   add_foreign_key "groups", "users"
+  add_foreign_key "responses", "groups"
+  add_foreign_key "responses", "users"
 end
