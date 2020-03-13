@@ -1,12 +1,19 @@
 import React, { Component, PropTypes } from 'react';
+import axios from 'axios';
 
 class Header extends Component {
   constructor(props){
     super(props);
     this.state = {
-      isLoggedIn: false,
+      isLoggedIn: true,
     }
   }
+
+  componentDidMount() {
+    
+  }
+
+
 
   render() {
     let headerList;
