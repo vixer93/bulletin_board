@@ -8,10 +8,16 @@ class GroupCreateForm extends Component {
     super(props);
     this.state = {
       groupTitle: "",
-      btnDisabled: true,
+      tags: [],
+      tagName: "",
+      tagBtnDisabled: true,
+      submitBtnDisabled: true,
     }
     this.handleChangeTitle      = this.handleChangeTitle.bind(this)
     this.handleSubmitGroupTitle = this.handleSubmitGroupTitle.bind(this)
+    this.handleClickAddTag      = this.handleClickAddTag.bind(this)
+    this.handleChangeTag        = this.handleChangeTag.bind(this)
+    this.handleClickRemoveTag   = this.handleClickRemoveTag.bind(this)
 
     const csrfToken = document.querySelector('[name=csrf-token]').content
     axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
@@ -19,14 +25,47 @@ class GroupCreateForm extends Component {
 
   handleChangeTitle(event){
     let isNull = true;
-
     if (event.target.value) {
       isNull = false;
     }
+
     this.setState({
       groupTitle: event.target.value,
-      btnDisabled: isNull,
+      submitBtnDisabled: isNull,
     })
+  }
+
+  handleChangeTag(event){
+    let isNull = true;
+    if (event.target.value) {
+      isNull = false;
+    }
+
+    this.setState({
+      tagName: event.target.value,
+      tagBtnDisabled: isNull,
+    })
+  }
+
+  handleClickAddTag(){
+    let tag;
+    if (/^#+.*/.test(this.state.tagName)) {
+      tag = this.state.tagName.replace(/#/g, '')
+    }else{
+      tag = this.state.tagName;
+    }
+
+    const tags = this.state.tags.concat(tag)
+    this.setState({
+      tags: tags,
+      tagName: "",
+    })
+  }
+
+  handleClickRemoveTag(id){
+    let tags = this.state.tags;
+    tags.splice(id, 1)
+    this.setState({tags: tags})
   }
 
   handleSubmitGroupTitle(){
@@ -46,6 +85,16 @@ class GroupCreateForm extends Component {
 
   render() {
 
+    let tags = [];
+
+    for(let i=0; i<this.state.tags.length; i++){
+      const tag = <div className="group-create-form__tag" key={i}>
+                    <h1 className="group-create-form__tag-name">#{this.state.tags[i]}</h1>
+                    <i onClick={this.handleClickRemoveTag.bind(this, i)} className="group-create-form__tag-remove fas fa-times"></i>
+                  </div>
+      tags.push(tag)
+    }
+
     return (
       <React.Fragment>
         <div className="group-create-form">
@@ -53,7 +102,12 @@ class GroupCreateForm extends Component {
           <div className="group-create-form__input-area">
             <h1 className="group-create-form__title">新しいスレッドを作成</h1>
             <input onChange={this.handleChangeTitle} className="group-create-form__input-title" type="text" placeholder="タイトルを入力"/><br/>
-            <button onClick={this.handleSubmitGroupTitle} disabled={this.state.btnDisabled} className="group-create-form__submit">作成！</button>
+            <div className="group-create-form__tags">{ tags }</div>
+            <div className="group-create-form__tag-form">
+              <input onChange={this.handleChangeTag} className="group-create-form__tag-input" value={this.state.tagName} type="text" placeholder="タグ付けしましょう！"/>
+              <button onClick={this.handleClickAddTag} disabled={this.state.tagBtnDisabled} className="group-create-form__tag-btn">追加</button>
+            </div>
+            <button onClick={this.handleSubmitGroupTitle} disabled={this.state.submitBtnDisabled} className="group-create-form__submit">作成！</button>
           </div>
         </div>
       </React.Fragment>
