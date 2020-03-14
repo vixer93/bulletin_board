@@ -48,7 +48,6 @@ class ResCreateForm extends Component {
       this.props.getResponse();
       this.scrollBottom();
     })
-
   }
 
   scrollBottom(){
@@ -63,7 +62,7 @@ class ResCreateForm extends Component {
         <div className="res-create-form">
           <h1 className="res-create-form__title">新規レスポンス</h1>
           <p>from</p>
-          <p className="res-create-form__user-name">名無しさん</p>
+          <p className="res-create-form__user-name">{ this.props.userName }</p>
           <p>レスポンス</p>
           <textarea onChange={this.handleChangeRes} value={this.state.response} className="res-create-form__input" placeholder="内容を記入してください"/>
           <button onClick={this.handleSubmitRes} disabled={this.state.btnDisabled} className="res-create-form__submit">投稿</button>

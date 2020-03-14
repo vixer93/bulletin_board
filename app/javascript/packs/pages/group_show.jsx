@@ -10,11 +10,14 @@ class GroupShow extends Component {
     this.state = {
       clickButton: false,
       responses: [],
+      isLoggedIn: false,
+      currentUser: {},
     }
     this.getResponse  = this.getResponse.bind(this)
   }
 
   componentDidMount(){
+    this.getCurrentUser();
     this.getResponse();
   }
 
@@ -35,12 +38,34 @@ class GroupShow extends Component {
     })
   }
 
+  getCurrentUser(){
+    axios.get("/users/current")
+    .then(res => {
+      if (res.data.id) {
+        this.setState({
+          isLoggedIn: true,
+          currentUser: res.data,
+        })
+      }else{
+        this.setState({isLoggedIn: false})
+      }
+    })
+  }
+
   render() {
+    let resCreateBtn;
     let resCreateForm;
     let resCards = [];
 
+    if (this.state.isLoggedIn) {
+      resCreateBtn = <ResCreateBtn
+                       handleClickBtn={()=>{this.handleClickBtn();}}
+                     />
+    }
+
     if (this.state.clickButton) {
       resCreateForm = <ResCreateForm
+                        userName={this.state.currentUser.name}
                         closeForm={()=>{this.closeForm();}}
                         getResponse={()=>{this.getResponse();}}
                       />
@@ -63,9 +88,7 @@ class GroupShow extends Component {
             {this.props.group.title}
           </div>
           { resCards }
-          <ResCreateBtn
-            handleClickBtn={()=>{this.handleClickBtn();}}
-          />
+          { resCreateBtn }
           { resCreateForm }
         </div>
       </React.Fragment>
