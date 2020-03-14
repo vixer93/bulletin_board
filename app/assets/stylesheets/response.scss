@@ -66,3 +66,27 @@
     cursor: pointer;
   }
 }
+
+.res-card {
+  width: 600px;
+  background-color: white;
+  margin: 0 0 20px 20px;
+  padding: 20px;
+  &__head {
+    display: flex;
+    margin-bottom: 30px;
+  }
+  &__user-name {
+    margin-left: 10px;
+    color: #29b6f6;
+  }
+  &__date {
+    margin-left: 10px;
+  }
+  &__response {
+    width: 100%;
+    overflow-wrap: break-word;
+    line-height: 20px;
+    white-space: pre-wrap;
+  }
+}

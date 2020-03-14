@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import axios             from 'axios';
+import axios from 'axios';
+import rsScroller    from 'react-smooth-scroller';
 
 var createObjectURL = (window.URL || window.webkitURL).createObjectURL || window.createObjectURL;
 
@@ -12,6 +13,7 @@ class ResCreateForm extends Component {
     }
     this.handleChangeRes = this.handleChangeRes.bind(this)
     this.handleSubmitRes = this.handleSubmitRes.bind(this)
+    this.scrollBottom    = this.scrollBottom.bind(this)
 
     const csrfToken = document.querySelector('[name=csrf-token]').content
     axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
@@ -43,8 +45,15 @@ class ResCreateForm extends Component {
               )
     .then(res=>{
       this.setState({response: ""})
+      this.props.getResponse();
+      this.scrollBottom();
     })
 
+  }
+
+  scrollBottom(){
+    let response_area = document.getElementsByClassName('group-show')[0];
+    rsScroller.scroller(window.pageYOffset, response_area.scrollHeight);
   }
 
   render() {

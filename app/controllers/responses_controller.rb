@@ -1,4 +1,10 @@
 class ResponsesController < ApplicationController
+  def index
+    group = Group.find(params[:group_id])
+    @responses = group.responses
+    render :index, formats: 'json', handlers: 'jbuilder'
+  end
+
   def create
     group = Group.find(params[:group_id])
     @response = group.responses.new(response_params)

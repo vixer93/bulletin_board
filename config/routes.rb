@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :groups, only: [:index, :create, :show] do
     get :info, on: :collection
-    resources :responses, only: [:create]
+    resources :responses, only: [:index, :create]
   end
 
 

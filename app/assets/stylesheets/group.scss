@@ -1,3 +1,17 @@
+.group-index {
+  padding-top: 80px;
+}
+
+.group-show {
+  padding-top: 80px;
+  &__title {
+    margin-left: 30px;
+    margin-bottom: 20px;
+    font-size: 25px;
+    font-weight: bold;
+  }
+}
+
 .group-create-button {
   width: 125px;
   height: 125px;
