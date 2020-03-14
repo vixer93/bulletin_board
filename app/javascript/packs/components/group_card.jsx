@@ -12,11 +12,14 @@ class GroupCard extends Component {
     return (
       <React.Fragment>
         <div className="group-card">
-          <h1 className="group-card__title">{ this.props.title }</h1>
-          <p className="group-card__response">ここに最新のレスの内容が入ります。</p>
+          <h1 className="group-card__title">
+            <a className="group-card__link" href={"/groups/"+this.props.id}>{ this.props.title }</a>
+          </h1>
+          <p>最新のレスポンス：</p>
+          <p className="group-card__response">{ this.props.lateRes }</p>
           <div className="group-card__res-sum">
             <i className="group-card__res-icon fas fa-comment-dots"></i>
-            <p>123</p>
+            <p>{ this.props.resNum }</p>
           </div>
         </div>
       </React.Fragment>

@@ -17,8 +17,8 @@ class GroupsController < ApplicationController
   end
 
   def info
-    @groups = Group.all.order("id DESC")
-    render json: @groups
+    @groups = Group.includes(:responses).order("id DESC")
+    render :info, formats: 'json', handlers: 'jbuilder'
   end
 
   private

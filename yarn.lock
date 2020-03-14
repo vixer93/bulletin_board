@@ -5955,6 +5955,11 @@ react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.0.tgz#0f37c3613c34fe6b37cd7f763a0d6293ab15c527"
   integrity sha512-GFMtL0vHkiBv9HluwNZTggSn/sCyEt9n02aM0dSAjGGyqyNlAyftYm4phPxdvCigG15JreC5biwxCgTAJZ7yAA==
 
+react-smooth-scroller@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-smooth-scroller/-/react-smooth-scroller-1.2.0.tgz#7189d5feef8c838ca8edb1e07361a7dcbc68e0e2"
+  integrity sha512-23x6+eV47qtdsJTP+5WXFjzbZIq8URmg6WE5PVigqcTErbZ88ngQ8cSjkXc8WrJ5Bn3g5BOJpjl2l4kZsabHSw==
+
 react@^16.13.0:
   version "16.13.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.0.tgz#d046eabcdf64e457bbeed1e792e235e1b9934cf7"

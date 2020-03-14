@@ -1,0 +1,92 @@
+.res-create-btn {
+  width: 80px;
+  height: 80px;
+  background-color: #29b6f6;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  &__icon {
+    text-align: center;
+    color: white;
+    font-size: 40px;
+  }
+}
+
+.res-create-form {
+  width: 220px;
+  height: calc(100% - 60px);
+  background-color: white;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 0 30px;
+  &__title {
+    font-size: 20px;
+    margin: 20px 0;
+    text-align: center;
+  }
+  &__user-name {
+    margin: 20px 0;
+  }
+  &__input {
+    width: 100%;
+    height: 150px;
+    border-style: none;
+    background-color: #f4f8fa;
+    margin: 5px 0 20px 0;
+    font-size: 18px;
+    text-align: top;
+    resize: none;
+  }
+  &__submit {
+    border-style: none;
+    background-color: #29b6f6;
+    color: white;
+    height: 30px;
+    width: 100%;
+    font-size: 18px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    cursor: pointer;
+  }
+  &__close {
+    border-style: none;
+    background-color: #eeeeee;
+    color: #424242;
+    height: 30px;
+    width: 100%;
+    font-size: 18px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    cursor: pointer;
+  }
+}
+
+.res-card {
+  width: 600px;
+  background-color: white;
+  margin: 0 0 20px 20px;
+  padding: 20px;
+  &__head {
+    display: flex;
+    margin-bottom: 30px;
+  }
+  &__user-name {
+    margin-left: 10px;
+    color: #29b6f6;
+  }
+  &__date {
+    margin-left: 10px;
+  }
+  &__response {
+    width: 100%;
+    overflow-wrap: break-word;
+    line-height: 20px;
+    white-space: pre-wrap;
+  }
+}
