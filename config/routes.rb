@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :responses, only: [:index, :create]
   end
 
+  resources :tags, only: [:create]
 
   root to: 'groups#index'
 end

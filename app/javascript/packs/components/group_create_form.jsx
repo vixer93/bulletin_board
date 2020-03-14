@@ -18,6 +18,7 @@ class GroupCreateForm extends Component {
     this.handleClickAddTag      = this.handleClickAddTag.bind(this)
     this.handleChangeTag        = this.handleChangeTag.bind(this)
     this.handleClickRemoveTag   = this.handleClickRemoveTag.bind(this)
+    this.createTags             = this.createTags.bind(this)
 
     const csrfToken = document.querySelector('[name=csrf-token]').content
     axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
@@ -83,6 +84,21 @@ class GroupCreateForm extends Component {
     })
   }
 
+  createTags(){
+    let formData = new FormData();
+    this.state.tags.forEach((tag,i)=>{
+      formData.append('tag[name][]', tag);
+    })
+
+    axios.post("/tags",
+               formData,
+               {headers: {'content-type': 'multipart/form-data',}}
+              )
+    .then(res=>{
+      console.log("OK")
+    })
+  }
+
   render() {
 
     let tags = [];
@@ -91,6 +107,7 @@ class GroupCreateForm extends Component {
       const tag = <div className="group-create-form__tag" key={i}>
                     <h1 className="group-create-form__tag-name">#{this.state.tags[i]}</h1>
                     <i onClick={this.handleClickRemoveTag.bind(this, i)} className="group-create-form__tag-remove fas fa-times"></i>
+                    <button onClick={this.createTags}>test</button>
                   </div>
       tags.push(tag)
     }
