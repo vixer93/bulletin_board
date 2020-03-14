@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_13_140939) do
+ActiveRecord::Schema.define(version: 2020_03_14_161032) do
+
+  create_table "group_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "group_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_tag_relations_on_group_id"
+    t.index ["tag_id"], name: "index_group_tag_relations_on_tag_id"
+  end
 
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
@@ -31,6 +40,12 @@ ActiveRecord::Schema.define(version: 2020_03_13_140939) do
     t.index ["user_id"], name: "index_responses_on_user_id"
   end
 
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", default: "名無しさん", null: false
     t.string "email", default: "", null: false
@@ -44,6 +59,8 @@ ActiveRecord::Schema.define(version: 2020_03_13_140939) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "group_tag_relations", "groups"
+  add_foreign_key "group_tag_relations", "tags"
   add_foreign_key "groups", "users"
   add_foreign_key "responses", "groups"
   add_foreign_key "responses", "users"
