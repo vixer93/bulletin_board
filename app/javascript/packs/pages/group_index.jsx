@@ -101,6 +101,10 @@ class GroupIndex extends Component {
     return (
       <React.Fragment>
         <div className="group-index">
+          <div className="group-index__search">
+            <input className="group-index__search-form" placeholder="検索"/>
+            <i className="group-index__search-icon fas fa-search"></i>
+          </div>
           { groups }
         </div>
         { groupCreateBtn }
