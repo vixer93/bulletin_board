@@ -10,6 +10,23 @@
     font-size: 25px;
     font-weight: bold;
   }
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 30px 10px 30px;
+    width: calc(100% - 60px);
+  }
+  &__tag {
+    width: max-content;
+    font-size: 20px;
+    line-height: 25px;
+    padding: 10px;
+    margin: 0 10px 10px 0;
+    background-color: #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .group-create-button {
@@ -50,7 +67,6 @@
     background: rgba(45,45,45, 0.8);
   }
   &__input-area {
-    height: 200px;
     width: 500px;
     padding: 20px;
     position: fixed;
@@ -71,7 +87,7 @@
     background-color: #f4f8fa;
     border-style: none;
     font-size: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
   &__submit {
     width: 400px;
@@ -84,11 +100,59 @@
     border-radius: 30px;
     cursor: pointer;
   }
+  &__tags {
+    margin: 0 auto;
+    width: 400px;
+  }
+  &__tag {
+    width: max-content;
+    font-size: 20px;
+    line-height: 25px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__tag-name {
+    font-size: 20px;
+    margin-right: 5px;
+  }
+  &__tag-remove {
+    cursor: pointer;
+  }
+  &__tag-form {
+    margin: 0 auto 30px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+  }
+  &__tag-input {
+    width: 300px;
+    height: 35px;
+    background-color: #f4f8fa;
+    border-style: none;
+    font-size: 20px;
+    padding: 0;
+  }
+  &__tag-btn {
+    width: 100px;
+    height: 35px;
+    padding: 0;
+    font-size: 20px;
+    color: #FFE733;
+    border-style: none;
+    background-color: black;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+  }
 }
 
 .group-card {
   width: 500px;
-  height: 200px;
   margin: 0 auto 30px auto;
   padding: 20px;
   background-color: white;
@@ -108,6 +172,24 @@
     margin-top: 10px;
     height: 68px;
     overflow: hidden;
+  }
+  &__bottom-contents {
+    display: flex;
+  }
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__tag {
+    width: max-content;
+    font-size: 13px;
+    line-height: 15px;
+    padding: 10px;
+    margin: 0 10px 10px 0;
+    background-color: #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   &__res-sum {
     display: flex;
