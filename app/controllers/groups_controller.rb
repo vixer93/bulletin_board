@@ -18,7 +18,7 @@ class GroupsController < ApplicationController
   end
 
   def info
-    @groups = Group.includes([:responses, :tags]).order("id DESC")
+    @groups = word_search(params[:keyword])
     render :info, formats: 'json', handlers: 'jbuilder'
   end
 
@@ -28,4 +28,10 @@ class GroupsController < ApplicationController
     params.require(:group).permit(:title, tag_ids: []).merge(user_id: current_user.id)
   end
 
+  def word_search(word)
+    return Group.includes([:responses, :tags]).order("id DESC") unless word
+    Group.eager_load(:responses, :tags)
+         .where("groups.title LIKE(?) OR responses.content LIKE(?) OR tags.name LIKE(?)",
+                "%#{word}%", "%#{word}%", "%#{word}%").order("groups.id DESC")
+  end
 end
