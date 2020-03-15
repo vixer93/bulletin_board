@@ -18,7 +18,7 @@ class GroupsController < ApplicationController
   end
 
   def info
-    @groups = word_search("プログラミング")
+    @groups = word_search(params[:keyword])
     render :info, formats: 'json', handlers: 'jbuilder'
   end
 

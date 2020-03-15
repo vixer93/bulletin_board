@@ -3,24 +3,29 @@
   &__search {
     width: 450px;
     margin: 0 auto 30px auto;
-    position: relative;
-
+    display: flex;
+    align-items: center;
   }
   &__search-form {
     width: 100%;
     height: 35px;
     border-style: none;
     font-size: 20px;
-    border-radius: 20px;
+    // border-radius: 20px;
     padding: 5px 10px;
     box-sizing: border-box;
   }
-  &__search-icon {
-    position: absolute;
-    right: 15px;
-    top: 8px;
-    font-size: 20px;
-    color: #757575;
+  &__search-icon.fas {
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 0 5px;
+    background-color: #29b6f6;
+    width: 70px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
   }
 }
 

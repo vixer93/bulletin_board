@@ -11,8 +11,10 @@ class GroupIndex extends Component {
       isLoggedIn: false,
       clickButton: false,
       groups: [],
+      searchWord: "",
     }
     this.getGroups = this.getGroups.bind(this)
+    this.handleChangeSearch = this.handleChangeSearch.bind(this)
   }
 
   componentDidMount(){
@@ -33,7 +35,9 @@ class GroupIndex extends Component {
   }
 
   getGroups(){
-    axios.get("/groups/info")
+    axios.get("/groups/info",
+              {params: {keyword: this.state.searchWord}}
+             )
     .then(res=>{
       this.setState({
         groups: res.data,
@@ -53,6 +57,10 @@ class GroupIndex extends Component {
         this.setState({isLoggedIn: false})
       }
     })
+  }
+
+  handleChangeSearch(e){
+    this.setState({searchWord: e.target.value},)
   }
 
   render() {
@@ -102,8 +110,8 @@ class GroupIndex extends Component {
       <React.Fragment>
         <div className="group-index">
           <div className="group-index__search">
-            <input className="group-index__search-form" placeholder="検索"/>
-            <i className="group-index__search-icon fas fa-search"></i>
+            <input onChange={this.handleChangeSearch} className="group-index__search-form" placeholder="検索ワード"/>
+            <i onClick={this.getGroups} className="group-index__search-icon fas fa-search">検索</i>
           </div>
           { groups }
         </div>
