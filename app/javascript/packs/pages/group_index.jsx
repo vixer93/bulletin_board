@@ -8,6 +8,7 @@ class GroupIndex extends Component {
   constructor(props){
     super(props);
     this.state = {
+      userResponse: false,
       isLoggedIn: false,
       clickButton: false,
       groups: [],
@@ -41,7 +42,6 @@ class GroupIndex extends Component {
     .then(res=>{
       this.setState({
         groups: res.data,
-        searchWord: "",
       })
     })
   }
@@ -49,13 +49,16 @@ class GroupIndex extends Component {
   getCurrentUser(){
     axios.get("/users/current")
     .then(res => {
-      if (res.data.id) {
+      if (res.data) {
         this.setState({
-          isLoggedIn: true,
-          currentUser: res.data,
+          userResponse: true,
+          isLoggedIn: true
         })
       }else{
-        this.setState({isLoggedIn: false})
+        this.setState({
+          userResponse: true,
+          isLoggedIn: false
+        })
       }
     })
   }
@@ -81,7 +84,7 @@ class GroupIndex extends Component {
     let groupCreateForm;
     let groups = [];
 
-    if (this.state.isLoggedIn) {
+    if (this.state.userResponse && this.state.isLoggedIn) {
       groupCreateBtn = <GroupCreateButton
                          handleClickButton={()=>{this.handleClickButton();}}
                        />
