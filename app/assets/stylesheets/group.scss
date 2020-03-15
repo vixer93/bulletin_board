@@ -10,6 +10,23 @@
     font-size: 25px;
     font-weight: bold;
   }
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 30px 10px 30px;
+    width: calc(100% - 60px);
+  }
+  &__tag {
+    width: max-content;
+    font-size: 20px;
+    line-height: 25px;
+    padding: 10px;
+    margin: 0 10px 10px 0;
+    background-color: #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .group-create-button {
@@ -136,7 +153,6 @@
 
 .group-card {
   width: 500px;
-  height: 200px;
   margin: 0 auto 30px auto;
   padding: 20px;
   background-color: white;
@@ -156,6 +172,24 @@
     margin-top: 10px;
     height: 68px;
     overflow: hidden;
+  }
+  &__bottom-contents {
+    display: flex;
+  }
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__tag {
+    width: max-content;
+    font-size: 13px;
+    line-height: 15px;
+    padding: 10px;
+    margin: 0 10px 10px 0;
+    background-color: #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   &__res-sum {
     display: flex;

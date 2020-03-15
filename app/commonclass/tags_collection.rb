@@ -8,9 +8,11 @@ class TagsCollection
   attr_accessor :collection
 
   def initialize(tags=[])
-    if tags.present?
-      self.collection = tags["name"].map do |tag|
+    self.collection = tags["name"].map do |tag|
+      if Tag.where(name: tag).count == 0
         Tag.new(name: tag)
+      else
+        Tag.find_by(name: tag)
       end
     end
   end
@@ -27,5 +29,11 @@ class TagsCollection
       puts 'エラー'
     ensure
       return is_success
+  end
+
+  def tag_ids
+    tag_ids = collection.map do |tag|
+      tag.id
+    end
   end
 end

@@ -74,6 +74,7 @@ class GroupIndex extends Component {
 
     for(let i=0; i < this.state.groups.length; i++){
       let lateRes;
+      let tags;
 
       if (this.state.groups[i].lateRes) {
         lateRes = this.state.groups[i].lateRes.content;
@@ -81,11 +82,18 @@ class GroupIndex extends Component {
         lateRes = "まだレスポンスがありません"
       }
 
+      if (this.state.groups[i].tags) {
+        tags = this.state.groups[i].tags;
+      }else{
+        tags = null
+      }
+
       groups.push(<GroupCard
                     title={this.state.groups[i].title}
                     id={this.state.groups[i].id}
                     lateRes={lateRes}
                     resNum={this.state.groups[i].resNum}
+                    tags={tags}
                     key={this.state.groups[i].id}
                  />)
     }

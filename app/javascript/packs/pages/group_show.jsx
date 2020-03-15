@@ -56,6 +56,7 @@ class GroupShow extends Component {
     let resCreateBtn;
     let resCreateForm;
     let resCards = [];
+    let tags = [];
 
     if (this.state.isLoggedIn) {
       resCreateBtn = <ResCreateBtn
@@ -81,11 +82,21 @@ class GroupShow extends Component {
                     />)
     }
 
+    for(let i=0; i<this.props.tags.length; i++){
+      tags.push(<span className="group-show__tag" key={i}>
+                  {this.props.tags[i].name}
+                </span>
+               )
+    }
+
     return (
       <React.Fragment>
         <div className="group-show">
           <div className="group-show__title">
-            {this.props.group.title}
+            { this.props.group.title }
+          </div>
+          <div className="group-show__tags">
+            { tags }
           </div>
           { resCards }
           { resCreateBtn }

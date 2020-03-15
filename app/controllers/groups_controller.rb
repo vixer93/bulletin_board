@@ -14,17 +14,18 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @tags  = @group.tags
   end
 
   def info
-    @groups = Group.includes(:responses).order("id DESC")
+    @groups = Group.includes([:responses, :tags]).order("id DESC")
     render :info, formats: 'json', handlers: 'jbuilder'
   end
 
   private
 
   def group_params
-    params.require(:group).permit(:title).merge(user_id: current_user.id)
+    params.require(:group).permit(:title, tag_ids: []).merge(user_id: current_user.id)
   end
 
 end

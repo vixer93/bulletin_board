@@ -4,7 +4,7 @@ class TagsController < ApplicationController
   def create
     @tags = TagsCollection.new(tag_params)
     if @tags.save
-      render json: @tags
+      render json: @tags.tag_ids
     else
       redirect_to root_path
     end
