@@ -196,12 +196,13 @@
   }
   &__response {
     font-size: 17px;
-    margin-top: 10px;
+    margin: 10px 0;
     height: 68px;
     overflow: hidden;
   }
   &__bottom-contents {
     display: flex;
+    justify-content: space-between;
   }
   &__tags {
     display: flex;
@@ -217,13 +218,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
   }
   &__res-sum {
     display: flex;
     font-size: 17px;
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
+    align-items: flex-end;
   }
   &__res-icon {
     color: #FFE733;

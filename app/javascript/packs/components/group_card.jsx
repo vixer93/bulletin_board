@@ -12,7 +12,10 @@ class GroupCard extends Component {
     let tags = [];
 
     for(let i=0; i<this.props.tags.length; i++){
-      tags.push(<span className="group-card__tag" key={i}>
+      tags.push(<span
+                  onClick={(word)=>{this.props.handleClickTag(this.props.tags[i].name)}}
+                  className="group-card__tag" key={i}
+                >
                   {this.props.tags[i].name}
                 </span>)
     }
