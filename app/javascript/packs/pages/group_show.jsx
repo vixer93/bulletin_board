@@ -10,8 +10,9 @@ class GroupShow extends Component {
     this.state = {
       clickButton: false,
       responses: [],
+      userResponse: false,
       isLoggedIn: false,
-      currentUser: {},
+      userName: "",
     }
     this.getResponse  = this.getResponse.bind(this)
   }
@@ -22,6 +23,7 @@ class GroupShow extends Component {
   }
 
   handleClickBtn(){
+    this.getUserName();
     this.setState({clickButton: true})
   }
 
@@ -41,14 +43,24 @@ class GroupShow extends Component {
   getCurrentUser(){
     axios.get("/users/current")
     .then(res => {
-      if (res.data.id) {
+      if (res.data) {
         this.setState({
-          isLoggedIn: true,
-          currentUser: res.data,
+          userResponse: true,
+          isLoggedIn: true
         })
       }else{
-        this.setState({isLoggedIn: false})
+        this.setState({
+          userResponse: true,
+          isLoggedIn: false
+        })
       }
+    })
+  }
+
+  getUserName(){
+    axios.get("/users/user_name")
+    .then(res => {
+      this.setState({userName: res.data})
     })
   }
 
@@ -58,7 +70,7 @@ class GroupShow extends Component {
     let resCards = [];
     let tags = [];
 
-    if (this.state.isLoggedIn) {
+    if (this.state.userResponse && this.state.isLoggedIn) {
       resCreateBtn = <ResCreateBtn
                        handleClickBtn={()=>{this.handleClickBtn();}}
                      />
@@ -66,7 +78,7 @@ class GroupShow extends Component {
 
     if (this.state.clickButton) {
       resCreateForm = <ResCreateForm
-                        userName={this.state.currentUser.name}
+                        userName={this.state.userName}
                         closeForm={()=>{this.closeForm();}}
                         getResponse={()=>{this.getResponse();}}
                       />
