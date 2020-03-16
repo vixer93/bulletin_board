@@ -1,24 +1,34 @@
-# README
+# アプリケーション概要
+5チャンネルのような投稿掲示板サイト
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 機能一覧
+●ユーザー登録、ログイン機能
 
-Things you may want to cover:
+●閲覧機能
 
-* Ruby version
+●スレッド作成機能(ログインユーザーのみ)
 
-* System dependencies
+●スレッド作成時のタグ付け機能
 
-* Configuration
+●スレッド作成時のタグのインクリメンタルサーチ機能
 
-* Database creation
+●スレッド検索機能
 
-* Database initialization
+●レスポンス機能(ログインユーザーのみ)
 
-* How to run the test suite
+# 使用技術
+## ◼︎言語
+### バックエンド
+Ruby 2.5.1
+### フロントエンド
+React 16.12.0
+## ◼︎フレームワーク
+Ruby on Rails 5.2.4.1
+## ◼︎データベース
+### 開発環境
+MySQL 5.6.47
+### 本番環境
+PostgreSQL 11.6
+## ◼︎インフラ
+Heroku dyno
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
