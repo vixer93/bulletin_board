@@ -10,6 +10,13 @@ class TagsController < ApplicationController
     end
   end
 
+  def search
+    unless params[:tagword] == ""
+      @tags = Tag.where("name LIKE(?)", "%#{params[:tagword]}%").first(5)
+    end
+    render json: @tags
+  end
+
   private
 
   def tag_params

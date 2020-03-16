@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     resources :responses, only: [:index, :create]
   end
 
-  resources :tags, only: [:create]
+  resources :tags, only: [:create] do
+    get :search, on: :collection
+  end
 
   root to: 'groups#index'
 end

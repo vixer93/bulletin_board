@@ -10,6 +10,7 @@ class GroupCreateForm extends Component {
       groupTitle: "",
       tags: [],
       tagName: "",
+      searchedTags: [],
       tagBtnDisabled: true,
       submitBtnDisabled: true,
     }
@@ -18,6 +19,8 @@ class GroupCreateForm extends Component {
     this.handleClickAddTag      = this.handleClickAddTag.bind(this)
     this.handleChangeTag        = this.handleChangeTag.bind(this)
     this.handleClickRemoveTag   = this.handleClickRemoveTag.bind(this)
+    this.handleClickSearchedTag = this.handleClickSearchedTag.bind(this)
+    this.getTags                = this.getTags.bind(this)
 
     const csrfToken = document.querySelector('[name=csrf-token]').content
     axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
@@ -37,12 +40,14 @@ class GroupCreateForm extends Component {
 
   handleChangeTag(event){
     let isNull = true;
-    if (event.target.value) {
+    if (event.target.value.trim()) {
       isNull = false;
     }
 
+    this.getTags(event.target.value.trim())
+
     this.setState({
-      tagName: event.target.value,
+      tagName: event.target.value.trim(),
       tagBtnDisabled: isNull,
     })
   }
@@ -59,6 +64,7 @@ class GroupCreateForm extends Component {
     this.setState({
       tags: tags,
       tagName: "",
+      searchedTags: [],
     })
   }
 
@@ -66,27 +72,6 @@ class GroupCreateForm extends Component {
     let tags = this.state.tags;
     tags.splice(id, 1)
     this.setState({tags: tags})
-  }
-
-  createTags(){
-    let tagIds = [];
-    let formData = new FormData();
-    this.state.tags.forEach((tag,i)=>{
-      formData.append('tag[name][]', tag);
-    })
-
-    axios.post("/tags",
-               formData,
-               {headers: {'content-type': 'multipart/form-data',}}
-              )
-    .then(res=>{
-      for(let i=0; i<res.data.length; i++){
-        tagIds.push(res.data.collection[i].id)
-      }
-    },err=>{
-      console.log(err)
-    })
-    return tagIds;
   }
 
   async handleSubmitGroup(){
@@ -120,9 +105,26 @@ class GroupCreateForm extends Component {
     })
   }
 
+  async getTags(word){
+    if (word == "") {
+      this.setState({searchedTags: []})
+      return;
+    }
+    let res = await axios.get("/tags/search",
+                              {params: {tagword: word}}
+                             )
+    this.setState({searchedTags: res.data})
+  }
+
+  async handleClickSearchedTag(tag){
+    await this.setState({tagName: tag},)
+    this.handleClickAddTag()
+  }
+
   render() {
 
     let tags = [];
+    let searched_tags = [];
 
     for(let i=0; i<this.state.tags.length; i++){
       const tag = <div className="group-create-form__tag" key={i}>
@@ -130,6 +132,13 @@ class GroupCreateForm extends Component {
                     <i onClick={this.handleClickRemoveTag.bind(this, i)} className="group-create-form__tag-remove fas fa-times"></i>
                   </div>
       tags.push(tag)
+    }
+
+    for (let i=0; i<this.state.searchedTags.length; i++) {
+      const tag = <div onClick={this.handleClickSearchedTag.bind(this, this.state.searchedTags[i].name)} key={i} className="group-create-form__saved-tag">
+                    #<span>{ this.state.searchedTags[i].name }</span>
+                  </div>
+      searched_tags.push(tag)
     }
 
     return (
@@ -141,7 +150,10 @@ class GroupCreateForm extends Component {
             <input onChange={this.handleChangeTitle} className="group-create-form__input-title" type="text" placeholder="タイトルを入力"/><br/>
             <div className="group-create-form__tags">{ tags }</div>
             <div className="group-create-form__tag-form">
-              <input onChange={this.handleChangeTag} className="group-create-form__tag-input" value={this.state.tagName} type="text" maxlength="20" placeholder="タグ付けしましょう！"/>
+              <div>
+                <input onChange={this.handleChangeTag} className="group-create-form__tag-input" value={this.state.tagName} type="text" maxlength="20" placeholder="タグ付けしましょう！"/>
+                { searched_tags }
+              </div>
               <button onClick={this.handleClickAddTag} disabled={this.state.tagBtnDisabled} className="group-create-form__tag-btn">追加</button>
             </div>
             <button onClick={this.handleSubmitGroup} disabled={this.state.submitBtnDisabled} className="group-create-form__submit">作成！</button>
