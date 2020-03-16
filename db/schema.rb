@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_14_161032) do
+ActiveRecord::Schema.define(version: 2020_03_16_065342) do
 
   create_table "group_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "group_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_03_14_161032) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_groups_on_title"
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_03_14_161032) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tags_on_name"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
